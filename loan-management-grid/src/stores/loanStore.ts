@@ -35,11 +35,7 @@ export const useLoanStore = defineStore("loans", {
       }
     },
     sort(sortOrder: string | null, sortColumn: string | null) {
-      console.log('without out sort', this.loanList);
-      console.log('sortOrder', sortColumn);
-      console.log('sortColumn', sortColumn);
       if (sortOrder === null || sortColumn === null) {
-        console.log('Resetting to defaultLoanList');
         this.loanList = [...this.defaultLoanList];
         return;
       }
@@ -68,7 +64,6 @@ export const useLoanStore = defineStore("loans", {
         const order = compare(valA, valB);
         return sortOrder === 'asc' ? order : -order;
       });
-      console.log('after sort', this.loanList);
     },
     applyFilters() {
       this.loanList = this.defaultLoanList.filter((loan: Loan) => {
